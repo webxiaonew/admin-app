@@ -12,7 +12,7 @@
                           @change="handleChange"
                           allowClear
                 >
-                    <a-select-option v-for="c in categoryList" :key="c.id" :value="c.id">
+                    <a-select-option v-for="c in data" :key="c.id" :value="c.id">
                         {{c.name}}
                     </a-select-option>
                 </a-select>
@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import api from '@/api/category';
 
 export default {
   data() {
@@ -38,18 +37,12 @@ export default {
         searchWord: '',
         category: '',
       },
-      categoryList: [],
     };
   },
-  created() {
-    api.list().then((res) => {
-      this.categoryList = res.data;
-    });
-  },
+  props: ['data'],
   methods: {
     // 点击提交触发函数
     handleSubmit() {
-      console.log(111);
       this.$emit('submit', this.searchForm);
     },
     // 切换类目时触发函数

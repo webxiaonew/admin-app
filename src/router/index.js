@@ -33,6 +33,16 @@ const ancyRouterMap = [{
       icon: 'home',
     },
     component: () => import('@/views/page/productAdd.vue'),
+  },
+  {
+    path: 'edit/:id',
+    name: 'ProductEdit',
+    meta: {
+      title: '编辑商品',
+      hidden: true,
+      icon: 'home',
+    },
+    component: () => import('@/views/page/productAdd.vue'),
   }, {
     path: 'category',
     name: 'Category',
