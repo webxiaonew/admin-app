@@ -17,7 +17,7 @@
         </div>
         <ul class="user-info">
             <li>欢迎，{{$store.state.user.username}}<a-icon type="down" /></li>
-            <li @click="logout">退出</li>
+            <li class="loginout" @click="logout">退出</li>
         </ul>
       </div>
 </template>
@@ -48,3 +48,15 @@ export default {
   },
 };
 </script>
+
+<style lang="less">
+.main-header{
+    position: relative;
+    .user-info{
+        position: absolute;
+        top: 0;
+        right: 20px;
+        z-index: 999;
+    }
+}
+</style>

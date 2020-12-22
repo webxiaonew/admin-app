@@ -48,6 +48,12 @@ export default {
   created() {
     const { id } = this.$route.params;
     console.log(id);
+    if (id) {
+      api.detail(id).then((res) => {
+        console.log(res);
+        this.form = res;
+      });
+    }
   },
   methods: {
     next(form) {
@@ -59,13 +65,23 @@ export default {
       if (this.current === 1) {
         // 提交数据
         console.log(this.form);
-        api.add(this.form).then((res) => {
-          console.log(res);
-          this.$message.success('新增成功');
-          this.$router.push({
-            name: 'ProductList',
+        if (this.$route.params.id) {
+          api.edit(this.form).then((res) => {
+            console.log(res);
+            this.$message.success('修改成功');
+            this.$router.push({
+              name: 'ProductList',
+            });
           });
-        });
+        } else {
+          api.add(this.form).then((res) => {
+            console.log(res);
+            this.$message.success('新增成功');
+            this.$router.push({
+              name: 'ProductList',
+            });
+          });
+        }
       } else {
         this.current += 1;
       }
