@@ -3,7 +3,7 @@
         <!-- 搜索 -->
         <search-box @submit="searchSubmit" :data="categoryList"/>
         <a-button class="product-add-btn">
-           <router-link :to="{name:'ProductAdd'}">新增商品</router-link>
+           <router-link :to="{name:'ProductAdd'}">添加商品</router-link>
         </a-button>
         <!-- 表格 -->
         <product-table :data="tableData"
